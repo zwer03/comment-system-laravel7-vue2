@@ -13,7 +13,12 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::group([
+    'prefix' => 'v1',
+], function () {
+    // Store comment
+    Route::post('comment', 'CommentController@store')->name('comment.store');
+    // List comments
+    Route::get('comment', 'CommentController@index')->name('comment.index');
+});
 
-Route::post('comment', 'CommentController@store')->name('comment.store');
-
-Route::get('comment', 'CommentController@index')->name('comment.index');
